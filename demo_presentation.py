@@ -57,9 +57,10 @@ def banner(t,c=C.BLUE): print("\n"+c+C.BOLD+"="*70+f"\n  {t}\n"+"="*70+C.END)
 def section(t): print("\n"+C.CYAN+C.BOLD+f"  -- {t} "+"-"*(62-len(t))+C.END)
 def ok(t): print(C.GREEN+C.BOLD+f"  [OK] {t}"+C.END)
 def info(t): print(C.YELLOW+f"  --> {t}"+C.END)
-def pause(m="Press ENTER to continue..."):
+def pause(m="Processing next module..."):
     print("\n"+C.BOLD+C.BLUE+"  "+"─"*60+C.END)
-    input(C.BOLD+f"  [PAUSE] {m}"+C.END+"\n")
+    print(C.BOLD+f"  [AUTO] {m}"+C.END+"\n")
+    time.sleep(2)
 
 print("\033[2J\033[H",end="")
 banner("SATELLITE TELEMETRY SECURITY -- LIVE DEMONSTRATION",C.HEADER)

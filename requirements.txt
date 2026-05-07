@@ -1,4 +1,7 @@
-streamlit
+flask
+flask-cors
+cryptography
 numpy
 matplotlib
-cryptography
+requests
+gunicorn

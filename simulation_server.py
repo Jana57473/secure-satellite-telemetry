@@ -14,6 +14,7 @@ HOW TO USE:
 from flask import Flask, jsonify, render_template_string, request
 from flask_cors import CORS
 import threading, json, time, os
+import subprocess
 
 app = Flask(__name__)
 CORS(app)
@@ -179,6 +180,19 @@ header h1{font-size:15px;font-weight:600;color:var(--text)}
 <div class="sidebar">
   <div class="card">
     <div class="card-title">Simulation Pipeline</div>
+    <div style="margin-bottom:10px">
+  <button onclick="startSimulation()"
+    style="
+      background:#238636;
+      color:white;
+      border:none;
+      padding:10px 18px;
+      border-radius:6px;
+      cursor:pointer;
+      font-weight:bold;">
+      ▶ START LIVE SIMULATION
+  </button>
+</div>
     <div class="pipeline">
       <span class="step-pill" id="sp1">1 Boot</span>
       <span class="step-pill" id="sp2">2 Telemetry</span>
@@ -341,6 +355,22 @@ header h1{font-size:15px;font-weight:600;color:var(--text)}
 </div>
 
 <script>
+async function startSimulation(){
+
+    try{
+
+        await fetch('/start_simulation', {
+            method:'POST'
+        });
+
+        alert("Simulation Started");
+
+    }catch(err){
+
+        alert("Failed to start simulation");
+
+    }
+}
 let lastLogCount=0;
 
 function switchTab(id){
@@ -542,6 +572,23 @@ poll();
 @app.route("/")
 def index():
     return render_template_string(HTML)
+
+@app.route("/start_simulation", methods=["POST"])
+def start_simulation():
+
+    try:
+        subprocess.Popen(
+            ["python", "demo_presentation.py"],
+            creationflags=subprocess.CREATE_NEW_CONSOLE
+        )
+
+        return jsonify({"status": "started"})
+
+    except Exception as e:
+        return jsonify({
+            "status": "error",
+            "message": str(e)
+        })
 
 if __name__ == "__main__":
     print("\n" + "="*60)
