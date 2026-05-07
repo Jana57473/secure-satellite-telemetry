@@ -1,1 +1,0 @@
-web: gunicorn simulation_server:app
