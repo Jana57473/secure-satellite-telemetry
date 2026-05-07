@@ -92,6 +92,45 @@ which provides:
 
 ---
 
+---
+
+# 📷 Project Output Screenshots
+
+## 🔹 Encryption Performance Graph
+
+![Performance Graph](outputs/graph1_performance.png)
+
+---
+
+## 🔹 Recovery Analysis Graph
+
+![Recovery Graph](outputs/graph2_recovery.png)
+
+---
+
+## 🔹 Security Performance Graph
+
+![Security Graph](outputs/graph3_security.png)
+
+---
+
+## 🔹 SNR vs Decryption Analysis
+
+![SNR Graph](outputs/graph4_snr_decrypt.png)
+
+---
+
+## 🔹 BER vs SNR Analysis
+
+![BER Graph](outputs/graph5_ber_snr.png)
+
+---
+
+## 🔹 Constellation Diagram
+
+![Constellation Diagram](outputs/graph6_constellation.png)
+
+
 # Project Objective
 
 To design and implement a secure telemetry communication framework for satellite communication using modern authenticated encryption techniques.
